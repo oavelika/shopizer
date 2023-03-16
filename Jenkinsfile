@@ -1,6 +1,6 @@
 node {
     stage('clone git repo') {
-    git 'https://github.com/path_to_git_repo/app.git'
+    git 'https://github.com/oavelika/shopizer.git'
     }
     stage("configure") {
     sh "mkdir $WORKSPACE/$BUILD_NUMBER/"
