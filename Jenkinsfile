@@ -15,7 +15,7 @@
 
  sh "cd C:/\\Users/\\Olga_Velikaya/\\Documents/\\Performance/\\apache-jmeter-5.5/\\apache-jmeter-5.5/\\bin"
 
-      sh """jmeter -Jjmeter.save.saveservice.output_format=xml
+      sh """./jmeter -Jjmeter.save.saveservice.output_format=xml
 
           -n -t app/\\C:/\\Users/\\Olga_Velikaya/\\Documents/\\Performance/\\apache-jmeter-5.5/\\apache-jmeter-5.5/\\oavelika_testplan.jmx
 
