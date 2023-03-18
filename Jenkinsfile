@@ -1,36 +1,33 @@
-  node {
+ node {
  
 
  stage("configure") {
-
-        sh "mkdir C:/\\Users/\\Olga_Velikaya/\\.jenkins/\\workspace/\\jmeter_pipeline/\\$BUILD_NUMBER/\\"
+     
+     bat script: $/ mkdir  $WORKSPACE\$BUILD_NUMBER /$
 
     }
 
  
 
  stage('run test'){
-
- sh "mkdir -p /\\tmp/\\reports"
-
- sh "cd C:/\\Users/\\Olga_Velikaya/\\Documents/\\Performance/\\apache-jmeter-5.5/\\apache-jmeter-5.5/\\bin"
-
-      sh """./jmeter -Jjmeter.save.saveservice.output_format=xml
-
-          -n -t app/\\C:/\\Users/\\Olga_Velikaya/\\Documents/\\Performance/\\apache-jmeter-5.5/\\apache-jmeter-5.5/\\oavelika_testplan.jmx
-
-            -l /\\tmp/\\reports/\\JMeter.jtl -e -o /\\tmp/\\reports/\\HtmlReport"""
-
+     
+     bat script: $/ mkdir \tmp\reports /$
+     
+     bat script: $/ cd C:\Users\Olga_Velikaya\Documents\Performance\apache-jmeter-5.5\apache-jmeter-5.5\bin" /$
+     
+     bat script: $/ jmeter -Jjmeter.save.saveservice.output_format=csv -n -t C:\Users\Olga_Velikaya\Documents\Performance\apache-jmeter-5.5\apache-jmeter-5.5\oavelika_testplan.jmx -l \tmp\reports\JMeter.jtl -e -o \tmp\reports\HtmlReport /$
+     
+     
  }
 
  
 
  stage('publish results'){
-
- sh "mv /\\tmp/\\reports/\\* C:/\\Users/\\Olga_Velikaya/\\.jenkins/\\workspace/\\jmeter_pipeline/\\$BUILD_NUMBER/\\"
-
- archiveArtifacts artifacts: 'C:/\\Users/\\Olga_Velikaya/\\.jenkins/\\workspace/\\jmeter_pipeline/\\$BUILD_NUMBER/\\JMeter.jtl, C:/\\Users/\\Olga_Velikaya/\\.jenkins/\\workspace/\\jmeter_pipeline/\\$BUILD_NUMBER/\\HtmlReport/\\index.html'
-
-    } 
-
-  }
+     
+     bat script: $/ move \tmp\reports\* $WORKSPACE\$BUILD_NUMBER /$
+     
+     archiveArtifacts artifacts:  $/ **/*.jtl, $WORKSPACE\$BUILD_NUMBER\HtmlReport\index.html /$
+     
+     } 
+}
+  
